@@ -150,7 +150,7 @@ for layer_name in feature_layers:
 
     x = np.random.uniform(0, 255, (1, height, width, 3)) - 128.
 
-    iterations = 1
+    iterations = 8
 
     for i in range(iterations):
         print('Start of iteration', i)
