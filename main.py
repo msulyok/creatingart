@@ -13,7 +13,6 @@ import tensorflow as tf
 tf.compat.v1.disable_eager_execution()
 
 from scipy.optimize import fmin_l_bfgs_b
-#from scipy.misc import imsave
 
 
 height = 512
@@ -151,7 +150,7 @@ for layer_name in feature_layers:
 
     x = np.random.uniform(0, 255, (1, height, width, 3)) - 128.
 
-    iterations = 8
+    iterations = 1
 
     for i in range(iterations):
         print('Start of iteration', i)
@@ -169,7 +168,7 @@ for layer_name in feature_layers:
         x[:, :, 2] += 123.68
         x = np.clip(x, 0, 255).astype('uint8')
 
-        Image.fromarray(x)
+        Image.fromarray(x).save('output.png')
 
 
 
