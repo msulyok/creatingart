@@ -9,6 +9,9 @@ from keras import backend
 from keras.models import Model
 from keras.applications.vgg16 import VGG16
 
+import tensorflow as tf
+tf.compat.v1.disable_eager_execution()
+
 from scipy.optimize import fmin_l_bfgs_b
 #from scipy.misc import imsave
 
@@ -53,8 +56,10 @@ input_tensor = backend.concatenate([content_image,
                                     combination_image], axis = 0)
 
 import h5py
+
 model = VGG16(input_tensor=input_tensor, weights='imagenet',
               include_top=False)
+
 
 layers = dict([(layer.name, layer.output) for layer in model.layers])
 layers
